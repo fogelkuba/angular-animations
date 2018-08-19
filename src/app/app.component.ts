@@ -7,7 +7,7 @@ import {trigger, state, style} from "@angular/animations";
     animations: [
         trigger('divState', [
             state('normal', style({
-                'background-color': 'red',
+                backgroundColor: 'red',
                 transform: 'translateX(0)'
             })),
             state('highlighted', style({
@@ -18,8 +18,13 @@ import {trigger, state, style} from "@angular/animations";
     ]
 })
 export class AppComponent {
-    status = 'normal';
+    state = 'normal';
     list = ['Milk', 'Sugar', 'Bread'];
+
+    onAnimate() {
+        this.state == 'normal' ? this.state = 'highlighted' : this.state = 'normal';
+        console.log(this.state);
+    }
 
     onAdd(item) {
         this.list.push(item);
