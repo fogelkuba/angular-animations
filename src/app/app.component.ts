@@ -16,6 +16,7 @@ import {trigger, state, style, transition, animate} from "@angular/animations";
             })),
             transition('normal <=> highlighted', animate(1500)),
         ]),
+
         trigger('wildState', [
             state('normal', style({
                 backgroundColor: 'green',
@@ -38,6 +39,26 @@ import {trigger, state, style, transition, animate} from "@angular/animations";
                     borderRadius: '50px'
                 })),
                 animate(500)
+            ]),
+        ]),
+
+        trigger('listOne', [
+            state('in', style({
+                opacity: 1,
+                transform: 'translateX(0)'
+            })),
+            transition('void => *', [
+                style({
+                    opacity: 0,
+                    transition: 'translateX(-100px)'
+                }),
+                animate(500)
+            ]),
+            transition('* => void', [
+                animate(200, style({
+                    transition: 'translateX(100px)',
+                    opacity: 0
+                }))
             ]),
         ]),
     ]
