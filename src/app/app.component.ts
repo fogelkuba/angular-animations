@@ -84,4 +84,8 @@ export class AppComponent {
     onDelete(item) {
         this.list.splice(this.list.indexOf(item), 1);
     }
+
+    animationDone($event) {
+        console.log($event);
+    }
 }
