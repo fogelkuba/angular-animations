@@ -15,7 +15,6 @@ import {trigger, state, style, transition, animate} from "@angular/animations";
                 transform: 'translateX(100px)'
             })),
             transition('normal <=> highlighted', animate(1500)),
-            // transition('highlighted => normal', animate(100)),
         ]),
         trigger('wildState', [
             state('normal', style({
@@ -27,10 +26,11 @@ import {trigger, state, style, transition, animate} from "@angular/animations";
                 transform: 'translateX(100px) scale(1)'
             })),
             state('shrunken', style({
-                backgroundColor: 'azure',
-                transform: 'translateX(100px) scale(0.5)'
+                backgroundColor: 'yellow',
+                transform: 'translateX(0) scale(0.5)'
             })),
             transition('normal <=> highlighted', animate(1500)),
+            transition('shrunken <=> *', animate(1000)),
         ]),
     ]
 })
@@ -41,12 +41,11 @@ export class AppComponent {
 
     onAnimate() {
         this.state == 'normal' ? this.state = 'highlighted' : this.state = 'normal';
-        console.log(this.state);
+        this.wildState == 'normal' ? this.wildState = 'highlighted' : this.wildState = 'normal';
     }
 
     onShrink() {
-        this.wildState == 'normal' ? this.wildState = 'highlighted' : this.wildState = 'normal';
-        console.log(this.wildState);
+        this.wildState = 'shrunken';
     }
 
     onAdd(item) {
